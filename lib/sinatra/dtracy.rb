@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'haml'
+require 'rack/contrib'
 
 module Sinatra
   class Dtracy < Sinatra::Base
@@ -8,11 +9,13 @@ module Sinatra
     set :raise_errors, true
     set :static, true
     
+    use Rack::JSONP
+    
     get '/' do
       haml :index
     end
 
-    get '/updates/:id' do
+    get '/updates' do
       params[:id] ||= 1
       Event.all( :id.gt => params[:id])
     end
