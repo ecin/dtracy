@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'haml'
 require 'rack/contrib'
+require 'json'
 
 module Sinatra
   class Dtracy < Sinatra::Base
@@ -10,14 +11,16 @@ module Sinatra
     set :static, true
     
     use Rack::JSONP
+    use Rack::Probe
     
     get '/' do
       haml :index
     end
 
     get '/updates' do
-      params[:id] ||= 1
-      Event.all( :id.gt => params[:id])
+      events = Rack::Probe.events
+      idx = params[:idx].to_i
+      (events[idx..-1] || []).to_json
     end
   end
 end
