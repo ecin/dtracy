@@ -9,18 +9,22 @@ module Sinatra
     set :root, File.dirname(__FILE__) + '/'
     set :raise_errors, true
     set :static, true
+    set :reload, true
     
     use Rack::JSONP
     use Rack::Probe
-    
+
     get '/' do
       haml :index
     end
 
     get '/updates' do
       events = Rack::Probe.events
+      length = events.length
       idx = params[:idx].to_i
-      (events[idx..-1] || []).to_json
+      sleep 1 while idx >= length # Take naps until there's new data
+      events = events[idx..-1] || []
+      {:idx => length, :data => events }.to_json
     end
   end
 end
