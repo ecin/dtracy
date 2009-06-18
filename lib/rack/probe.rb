@@ -2,7 +2,12 @@ module Rack
   class Probe
 
     require 'dtrace'
+    require 'dtrace/provider'
     require 'thread'
+
+    Dtrace::Provider.create :rack do |p|
+      p.probe :request, :string
+    end
 
     @@events = []
 
@@ -19,8 +24,7 @@ module Rack
       # TODO: Get code from a file, can be set with initialize
       # Hardcoded for now
       code = <<-DSCRIPT
-      :::function-entry
-      /copyinstr((int) arg0) == "Rack::Probe" && copyinstr((int) arg1) == "call"/
+      :::request
       {
         trace(pid);
         trace(probeprov);
@@ -28,7 +32,6 @@ module Rack
         trace(probefunc);
         trace(probename); /* A given for all probes here */
         trace(copyinstr((int) arg0));
-        trace(copyinstr((int) arg1));
         trace(walltimestamp); /* Seems the resulting integer is too large for Ruby */
       }
       DSCRIPT
@@ -64,6 +67,8 @@ module Rack
 
 
     def call( env )
+      request = Rack::Request.new env
+      Dtrace::Probe::Rack.request { |p| p.fire(request.path) }
       @app.call env
     end
 
