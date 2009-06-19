@@ -25,9 +25,9 @@ module Rack
       # Hardcoded for now
       code = <<-DSCRIPT
       :::request
+      /copyinstr((int) arg0) == "/push"/
       {
         trace(pid);
-        trace(probeprov);
         trace(probemod);
         trace(probefunc);
         trace(probename); /* A given for all probes here */
@@ -49,7 +49,7 @@ module Rack
               # Push in the PID
               result << data.records[0].value
               # Push in the 4-tuple name for the probe
-              result << data.records[1..4].map{|r| r.value}.join(':')
+              result << data.records[1..3].map{|r| r.value}.join(':')
               # Anything that remains is an argument for said probe
               # Timestamp is tacked at the end
               result << data.records[5..-1].map{|r| r.value}
