@@ -20,9 +20,8 @@ module Sinatra
 
     get '/updates' do
       events = Rack::Probe.events
-      length = events.length
       idx = params[:idx].to_i
-      sleep 1 while idx >= length # Take naps until there's new data
+      sleep 1 while idx >= (length = events.length) # Take naps until there's new data
       events = events[idx..-1] || []
       {:idx => length, :data => events }.to_json
     end
