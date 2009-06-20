@@ -14,6 +14,17 @@ module Sinatra
     use Rack::JSONP
     use Rack::Probe
 
+    module Rack
+      class JSONP
+        alias_method :old_call, :call
+        def call(env)
+          old_call(env).flatten
+        end
+      end
+    end
+
+    run Sinatra::Dtracy
+
     get '/' do
       haml :index
     end
