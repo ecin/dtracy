@@ -4,12 +4,12 @@ Dtracy, or How To Soon Spot Trends in your Web Application and Server
 status
 ------
 
-Dtracy is part of the Ruby on Rail's Google Summer of Code '09 Quartet, with development updates and entertainment available at `http://ecin.tumblr.com` Welcome! Sit down, have a cookie, and enjoy the smell of freshly baked code right out of the oven.
+Dtracy is part of the Ruby on Rail's Google Summer of Code '09 Quartet, with development updates and entertainment available at `http://ecin.tumblr.com` Welcome! Sit down, grab a sugary drink, and enjoy the smell of freshly baked code right out of the oven.
 
 requirements
 ------------
 
-An operating system with support for Dtrace [ADD URL] is a must. Mac OS X, Solaris/OpenSolaris and FreeBSD are all acceptable choices, though you're hardcore if you get Dtrace running properly on FreeBSD.
+An operating system with support for Dtrace (http://www.sun.com/bigadmin/content/dtrace/) is a must. Mac OS X, Solaris/OpenSolaris and FreeBSD are all acceptable choices, though you're hardcore if you get Dtrace running properly on FreeBSD.
 
 A courageous heart will also come in handy: this is still alpha software.
 
