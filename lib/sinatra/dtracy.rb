@@ -64,6 +64,7 @@ module Sinatra
     end
 
     get '/updates' do
+      content_type :json
       events = @@events
       idx = params[:idx].to_i
       sleep 1 while idx >= (length = events.length) # Take naps until there's new data
