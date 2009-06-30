@@ -1,17 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)+'/../spec_helper.rb')
+require File.expand_path(File.dirname(__FILE__)+'/../../lib/rack/probe')
 
-Probe = Rack::Probe
-Event = Probe::Event
+describe Rack::Probe do
 
-describe Probe do
-
-  describe Event do 
-  
-    it 'should accept a probe name, timestamp, and an array as attributes when created' do
-      lambda{ Rack::Probe::Event.create  :probe => 'provider:module:function:name', 
-                            :timestamp => Time.now.to_i, 
-                            :arguments => [1, 'foo'] }.should_not raise_error
-    end
-    
-  end
 end
