@@ -94,6 +94,16 @@ describe 'dtracy'
         dtracy.Probes[event.name].events.pop().should_eql event
       end
     end
+    
+    describe 'latest()'
+      it 'should return the latest added event'
+        dtracy.Probes.addEvent(event)
+        dtracy.Probes.latest().should_eql event
+        evnt = new dtracy.Event(1234, 1234567890, 'gc-start', {"path": "/"})
+        dtracy.Probes.addEvent(evnt)
+        dtracy.Probes.latest().should_eql evnt
+      end
+    end
   end
   
   describe 'Events'
