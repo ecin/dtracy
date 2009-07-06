@@ -42,6 +42,15 @@ describe 'Array'
   end
 end
 
+describe 'gui'
+
+  describe 'Console'
+  
+    
+  
+  end
+end
+
 describe 'dtracy'
 
   before
@@ -83,6 +92,21 @@ describe 'dtracy'
       it 'should add an Event to the Probe with event.name'
         dtracy.Probes.addEvent(event)
         dtracy.Probes[event.name].events.pop().should_eql event
+      end
+    end
+  end
+  
+  describe 'Events'
+    describe 'toString()'
+      it 'should return a string represention of the event'
+        result = "<span class='evnt_timestamp'>1234567890</span> "
+        result += "<span class='evnt_name'>gc-start</span> "
+        result += "<span class='evnt_argument_name'>pid</span> "
+        result += "<span class='evnt_argument_value'>1234</span> "
+        result += "<span class='evnt_argument_name'>path</span> "
+        result += "<span class='evnt_argument_value'>/</span> "
+        evnt = new dtracy.Event(1234, 1234567890, 'gc-start', {"path": "/"})
+        result.should_eql evnt.toString()
       end
     end
   end
