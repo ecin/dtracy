@@ -3,6 +3,7 @@
   %head
     %title D. Tracy
     %script{ :src => 'js/jquery-1.3.2.js',    :type => 'text/javascript', :charset => 'utf-8' }
+    %script{ :src => 'js/jquery-ui-1.7.2.js', :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/processing.js',      :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/processing.init.js', :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/dtracy.js',          :type => 'text/javascript', :charset => 'utf-8' }
@@ -13,6 +14,7 @@
     %canvas{ :width => '200px', :height => '200px', :id => 'canvas' }
     %canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
     #bottom_console
-    %script new gui.Console("bottom_console");
-    %script dtracy.update(1);
+      #console_data &nbsp;
+    %script new gui.Console("console_data");
+    %script dtracy.update(0);
       
