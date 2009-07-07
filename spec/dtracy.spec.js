@@ -99,7 +99,7 @@ describe 'dtracy'
       it 'should return the latest added event'
         dtracy.Probes.addEvent(event)
         dtracy.Probes.latest().should_eql event
-        evnt = new dtracy.Event(1234, 1234567890, 'gc-start', {"path": "/"})
+        evnt = new dtracy.Event(1234, 1234567890, 'gc-start', ["/"])
         dtracy.Probes.addEvent(evnt)
         dtracy.Probes.latest().should_eql evnt
       end
@@ -113,9 +113,9 @@ describe 'dtracy'
         result += "<span class='evnt_name'>gc-start</span> "
         result += "<span class='evnt_argument_name'>pid</span> "
         result += "<span class='evnt_argument_value'>1234</span> "
-        result += "<span class='evnt_argument_name'>path</span> "
-        result += "<span class='evnt_argument_value'>/</span> "
-        evnt = new dtracy.Event(1234, 1234567890, 'gc-start', {"path": "/"})
+        result += "<span class='evnt_argument_name'>args</span> "
+        result += "<span class='evnt_argument'>/</span> "
+        evnt = new dtracy.Event(1234, 1234567890, 'gc-start', ["/"])
         result.should_eql evnt.toString()
       end
     end
