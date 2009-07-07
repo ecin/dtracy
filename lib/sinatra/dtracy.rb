@@ -15,8 +15,6 @@ module Sinatra
     use Rack::JSONP
     use Rack::Probe
 
-    run Sinatra::Dtracy
-
     @@events = []
 
     dtracy = Dtrace.new
