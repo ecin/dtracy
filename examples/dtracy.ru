@@ -3,9 +3,14 @@ require File.expand_path(File.dirname(__FILE__)+'/../lib/sinatra/dtracy')
 
 module Rack
   class JSONP
-    alias_method :old_call, :call
     def call(env)
-      old_call(env).flatten
+      status, headers, response = @app.call(env)
+      request = Rack::Request.new(env)
+      if request.params.include?('callback')
+        response = pad(request.params.delete('callback'), response)
+        headers['Content-Length'] = response.length.to_s
+      end
+      [status, headers, response]
     end
   end
 end
