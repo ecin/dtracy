@@ -6,10 +6,13 @@
     %script{ :src => 'js/processing.js',      :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/processing.init.js', :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/dtracy.js',          :type => 'text/javascript', :charset => 'utf-8' }
+    %script{ :src => 'js/gui.js',             :type => 'text/javascript', :charset => 'utf-8' }
     %link{ :rel => 'stylesheet', :href =>'/css/awesome.css', :type => 'text/css' }
   %body
     %console{ :id => 'console' }
     %canvas{ :width => '200px', :height => '200px', :id => 'canvas' }
     %canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
+    #bottom_console
+    %script new gui.Console("bottom_console");
     %script dtracy.update(1);
       
