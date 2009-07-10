@@ -18,7 +18,7 @@ module Sinatra
     use Rack::Probe
 
     @@events = []
-
+    @@probes = []
     dtracy = Dtrace.new
     dtracy.setopt('bufsize', '8m')
 
@@ -37,7 +37,12 @@ module Sinatra
     }
     DSCRIPT
 
-    dtracy.compile(code).execute
+    program = dtracy.compile(code)
+    dtracy.each_probe_prog(program) do |probe|
+      @@probes << probe.to_s
+    end
+    
+    program.execute
     dtracy.go 
 
     dtracy.buf_consumer(nil)
@@ -59,6 +64,7 @@ module Sinatra
     end
 
     get '/' do
+      @probes = @@probes
       haml :index
     end
 

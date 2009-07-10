@@ -17,6 +17,10 @@ module Sinatra
     def self.empty!
       @@events = []
     end
+    
+    def self.probes
+      @@probes
+    end
   end
 end
 
@@ -29,6 +33,13 @@ describe Sinatra::Dtracy do
   
   before :each do
     Sinatra::Dtracy.empty!
+  end
+  
+  it 'should hold a list of matched probes in @@probes' do
+    Sinatra::Dtracy.probes.should_not be_empty
+    Sinatra::Dtracy.probes.each do |p|
+      p.should match(/(.*):(.*):(.*):(.*)/)
+    end
   end
   
   describe 'GET /updates' do

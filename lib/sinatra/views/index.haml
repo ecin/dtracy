@@ -11,6 +11,9 @@
     %script{ :src => 'js/gui.js',             :type => 'text/javascript', :charset => 'utf-8' }
     %link{ :rel => 'stylesheet', :href =>'/css/awesome.css', :type => 'text/css' }
   %body
+    - unless @probes.empty?
+      - for probe in @probes
+        %p= probe
     %console{ :id => 'console' }
     %canvas{ :width => '200px', :height => '200px', :id => 'canvas' }
     %canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
