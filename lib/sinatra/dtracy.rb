@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'haml'
 require 'rack/contrib'
 require 'json'
+
+gem 'ruby-dtrace', '= 0.2.7'
 require 'dtrace'
 
 module Sinatra
