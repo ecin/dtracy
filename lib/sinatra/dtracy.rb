@@ -3,7 +3,7 @@ require 'haml'
 require 'rack/contrib'
 require 'json'
 
-gem 'ruby-dtrace', '= 0.2.7'
+gem 'ruby-dtrace', '>= 0.2.7'
 require 'dtrace'
 
 module Sinatra
@@ -19,6 +19,7 @@ module Sinatra
 
     @@events = []
     @@probes = []
+    
     dtracy = Dtrace.new
     dtracy.setopt('bufsize', '8m')
 

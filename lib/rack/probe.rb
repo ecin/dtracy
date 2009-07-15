@@ -7,7 +7,7 @@ end
 module Rack
   class Probe
     
-    gem 'ruby-dtrace', '= 0.2.7'
+    gem 'ruby-dtrace', '>= 0.2.7'
     require 'dtrace/provider'
 
     Dtrace::Provider.create :rack do |p|
