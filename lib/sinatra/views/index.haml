@@ -12,11 +12,20 @@
     %link{ :rel => 'stylesheet', :href =>'/css/awesome.css', :type => 'text/css' }
   %body
     #white_out
+    .date= @date.to_s
+    #time_strip
+      #time_strip_delimiters
+      #time_strip_segment
+    #probe_list
+      #probe_list_date
+        - for probe in @probes
+          .probe= probe
     %console{ :id => 'console' }
-    %canvas{ :width => '200px', :height => '200px', :id => 'canvas' }
-    %canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
+    //%canvas{ :width => '200px', :height => '200px', :id => 'canvas' }
+    //%canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
     #bottom_console
       #console_data &nbsp;
     %script new gui.Console("console_data");
     %script dtracy.update(0);
+    %script setTimeout('gui.toggle_white_out();', 3000);
       
