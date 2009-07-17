@@ -56,7 +56,24 @@ module Sinatra
       end
     end
 
+    class Dday < Struct.new(:day, :month, :year)
+      
+      def initialize(now = nil)
+        now ||= Time.now
+        @day = now.day.to_s
+        @month = Date::ABBR_MONTHNAMES[now.month].downcase
+        @year = now.year.to_s[-2..-1]
+      end
+      
+      def to_s
+        @day + '@' + @month + '\'' + @year
+      end
+      
+    end
+
     get '/' do
+      @date = Dday.new
+      @probes = ['path']
       haml :index
     end
 
