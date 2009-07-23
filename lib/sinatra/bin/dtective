@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby -rubygems
+
+require 'drb'
+require 'dtrace'
+
+DRb.start_service
+
+dtracy = Dtrace.new
+dtracy.setopt('bufsize', '8m')
+
+dtective = DRbObject.new_with_uri "druby://localhost:#{ARGV[0]}"
+program = dtracy.compile dtective.script
+program.execute
+
+dtracy.go
+
+dtracy.each_probe_prog(program) do |probe|
+  dtective.add_probe probe.to_s
+end
+
+DtraceConsumer.new(dtracy).consume do |d|
+  args = d.data[1..-1].map {|a| a.value }
+  dtective.inform({ :probe => d.probe.to_s, :timestamp => d.data[0].value, :args => args })
+end
