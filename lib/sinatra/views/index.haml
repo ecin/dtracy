@@ -5,20 +5,26 @@
     %script{ :src => 'js/jquery-1.3.2.js',    :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/jquery-ui-1.7.2.js', :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/jquery.jsonp-1.0.4.js', :type => 'text/javascript', :charset => 'utf-8' }
-    %script{ :src => 'js/processing.js',      :type => 'text/javascript', :charset => 'utf-8' }
-    %script{ :src => 'js/processing.init.js', :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/dtracy.js',          :type => 'text/javascript', :charset => 'utf-8' }
     %script{ :src => 'js/gui.js',             :type => 'text/javascript', :charset => 'utf-8' }
+    %script{ :src => 'js/processing.js',      :type => 'text/javascript', :charset => 'utf-8' }
+    %script{ :src => 'js/processing.init.js', :type => 'text/javascript', :charset => 'utf-8' }
     %link{ :rel => 'stylesheet', :href =>'/css/awesome.css', :type => 'text/css' }
   %body
-    - unless @probes.empty?
-      - for probe in @probes
-        %p= probe
+    #white_out
+    .date= @date.to_s
+    #time_strip
+      #time_strip_delimiters
+      #time_strip_segment
+    #probe_list
+      #probe_list_data
+        - for probe in @probes
+          .probe= probe
     %console{ :id => 'console' }
     %canvas{ :width => '200px', :height => '200px', :id => 'canvas' }
-    %canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
+    //%canvas{ :width => '720px', :height => '405px', :id => 'canvas2' }
     #bottom_console
       #console_data &nbsp;
     %script new gui.Console("console_data");
     %script dtracy.update(0);
-      
+    %script gui.setup();

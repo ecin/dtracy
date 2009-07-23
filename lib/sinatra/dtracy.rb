@@ -74,6 +74,21 @@ module Sinatra
     
     Dtective.new(code).run
     
+    class Dday < Struct.new(:day, :month, :year)
+      
+      def initialize(now = nil)
+        now ||= Time.now
+        @day = now.day.to_s
+        @month = Date::ABBR_MONTHNAMES[now.month].downcase
+        @year = now.year.to_s[-2..-1]
+      end
+      
+      def to_s
+        @day + '@' + @month + '\'' + @year
+      end
+      
+    end
+    
     get '/' do
       @probes = Dtective.probes
       haml :index
