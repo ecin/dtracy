@@ -3,6 +3,8 @@
 require 'drb'
 require 'dtrace'
 
+trap "INT", "exit"
+
 DRb.start_service
 
 dtracy = Dtrace.new
