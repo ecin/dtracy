@@ -13,6 +13,7 @@ module Sinatra
     set :root, File.dirname(__FILE__) + '/'
     set :raise_errors, true
     set :static, true
+    set :app_file, __FILE__
     set :reload, true
 
     use Rack::JSONP
@@ -22,7 +23,7 @@ module Sinatra
     # Hardcoded for now
     code = <<-DSCRIPT
     :::path
-    /copyinstr((int) arg0) != "/updates"/
+    /copyinstr((int) arg0) != "/__dtracy__/updates"/
     {
       trace(walltimestamp); /* Seems the resulting integer is too large for Ruby */
       trace(copyinstr((int) arg0));
@@ -89,12 +90,12 @@ module Sinatra
       
     end
     
-    get '/' do
+    get '__dtracy__/' do
       @probes = Dtective.probes
       haml :index
     end
 
-    get '/updates' do
+    get '__dtracy__/updates' do
       content_type :json
       events = Dtective.events
       idx = params[:idx].to_i

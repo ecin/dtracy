@@ -61,7 +61,7 @@ canvas{
 
 #time_strip{
   width: 861px;
-  background: url(/img/gray_stripe.png);
+  background: url(/__dtracy__/img/gray_stripe.png);
   height: 19px;
   margin: 0 auto;
   margin-top: 20px;
@@ -70,14 +70,14 @@ canvas{
 #time_strip_segment{
   width: 100px;
   height: 100%;
-  background: url(/img/red_stripe.png);
+  background: url(/__dtracy__/img/red_stripe.png);
   position: relative;
 }
 
 #time_strip_delimiters{
   height: 100%;
   width: 860;
-  background: url(/img/black_delimiter.png);
+  background: url(/__dtracy__/img/black_delimiter.png);
   position: relative;
 }
 
