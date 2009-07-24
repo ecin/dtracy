@@ -19,22 +19,23 @@ module Sinatra
     use Rack::JSONP
     use Rack::Probe
     
-    # TODO: Get code from a file, can be set with initialize
-    # Hardcoded for now
-    code = <<-DSCRIPT
-    :::path
-    /copyinstr((int) arg0) != "/__dtracy__/updates"/
-    {
-      trace(walltimestamp); /* Seems the resulting integer is too large for Ruby */
-      trace(copyinstr((int) arg0));
-    }
-    DSCRIPT
-
+    def initialize_copy( from )
+      unless Dtective::ran?
+        Dtective::run(options.scripts)
+        sleep 1 # Wait for the Dtectives to head out. HACKISH.
+      end
+      @app = from.app
+    end
+    
     class Dtective
       @@probes = []
       @@events = []
       @@bin = File.expand_path(File.dirname(__FILE__)+'/bin/dtective')
       @@port = 65000
+      
+      DRb.start_service
+      
+      attr_reader :script
 
       def self.probes
         @@probes
@@ -43,10 +44,21 @@ module Sinatra
       def self.events
         @@events
       end
+      
+      def self.run( scripts )
+        unless @ran
+          puts "[ Dtracy ] Running scripts..."
+          scripts.each do |s|
+            self.new(s).run
+            sleep 0.1 # Apparently can't generate too many Dtrace consumers at once.
+          end
+          @ran = 1
+        end
+      end
 
-      attr_reader :script
-
-      DRb.start_service
+      def self.ran?
+        not @ran.nil?
+      end
 
       def initialize(script)
         @script = script
@@ -73,8 +85,6 @@ module Sinatra
       end
     end
     
-    Dtective.new(code).run
-    
     class Dday < Struct.new(:day, :month, :year)
       
       def initialize(now = nil)
@@ -90,12 +100,13 @@ module Sinatra
       
     end
     
-    get '__dtracy__/' do
+    get '/__dtracy__/' do
       @probes = Dtective.probes
+      @date = Dday.new
       haml :index
     end
 
-    get '__dtracy__/updates' do
+    get '/__dtracy__/updates' do
       content_type :json
       events = Dtective.events
       idx = params[:idx].to_i

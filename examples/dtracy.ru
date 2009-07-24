@@ -15,4 +15,13 @@ module Rack
   end
 end
 
-run Sinatra::Dtracy
+script = <<-DSCRIPT
+:::path
+/copyinstr((int) arg0) != "/__dtracy__/updates"/
+{
+  trace(walltimestamp); 
+  trace(copyinstr((int) arg0));
+}
+DSCRIPT
+
+run Sinatra::Dtracy.configure {|app| app.set :scripts, [script]}
