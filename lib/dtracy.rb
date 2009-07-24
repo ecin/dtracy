@@ -38,9 +38,8 @@ module Dtracy
       content_type :json
       events = Dtective.events
       idx = params[:idx].to_i
-      sleep 1 while idx >= (length = events.length) # Take naps until there's new data
       events = events[idx..-1] || []
-      {:idx => length, :data => events }.to_json
+      {:idx => events.length, :data => events }.to_json
     end
   end
 end
