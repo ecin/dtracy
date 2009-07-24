@@ -26,7 +26,7 @@ module Dtracy
           self.new(s).run
           sleep 0.1 # Apparently can't generate too many Dtrace consumers at once.
         end
-        @ran = 1
+        @ran = true
       end
     end
 
@@ -48,10 +48,6 @@ module Dtracy
 
     def inform( events )
       @@events << events
-    end
-
-    def events
-      @@events
     end
 
     def add_probe( probe )
