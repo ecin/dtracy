@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__)+'/../lib/rack/probe')
-require File.expand_path(File.dirname(__FILE__)+'/../lib/sinatra/dtracy')
+require File.expand_path(File.dirname(__FILE__)+'/../lib/dtracy')
 
 module Rack
   class JSONP
@@ -24,4 +24,4 @@ script = <<-DSCRIPT
 }
 DSCRIPT
 
-run Sinatra::Dtracy.configure {|app| app.set :scripts, [script]}
+run Dtracy::App.configure {|app| app.set :scripts, [script]}
