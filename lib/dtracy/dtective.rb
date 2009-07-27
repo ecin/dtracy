@@ -38,7 +38,7 @@ module Dtracy
       @script = script
       @server = DRb.start_service nil, self
       p = (@server.uri =~ /:[0-9]./) + 1 # Find a neater way to do this
-      @port = @server.uri[s..-1].to_i
+      @port = @server.uri[p..-1].to_i
     end
 
     def run
