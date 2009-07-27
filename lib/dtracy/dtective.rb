@@ -36,9 +36,9 @@ module Dtracy
 
     def initialize(script)
       @script = script
-      @port = @@port
-      DRb.start_service "druby://localhost:#{@port}", self
-      @@port += 1 # Missing exception handling in case a port is taken.
+      @server = DRb.start_service nil, self
+      p = (@server.uri =~ /:[0-9]./) + 1 # Find a neater way to do this
+      @port = @server.uri[s..-1].to_i
     end
 
     def run
