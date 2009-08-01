@@ -16,6 +16,7 @@ body{
 canvas{
   position: relative;
   z-index: 0;
+  cursor: pointer;
 }
 
 #bottom_console{
@@ -91,3 +92,5 @@ canvas{
 
 .evnt_name{ font-weight: bold; }
 .evnt_argument_name { text-decoration: underline; }
+
+.ui-draggable-dragging{ cursor: pointer; }
