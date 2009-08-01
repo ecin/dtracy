@@ -1,2 +1,2 @@
 #!/bin/bash
-thin -R examples/dtracy.ru start
+rackup examples/dtracy.ru -p 3000
