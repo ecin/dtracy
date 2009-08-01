@@ -31,15 +31,15 @@ module Dtracy
     get '/__dtracy__/' do
       @probes = Dtective.probes
       @date = Time.now.strftime( "%d@%b'%y" )
-      haml :index
+      erb :index
     end
 
     get '/__dtracy__/updates' do
       content_type :json
       events = Dtective.events
       idx = params[:idx].to_i
-      events = events[idx..-1] || []
-      {:idx => events.length, :data => events }.to_json
+      subset_events = events[idx..-1] || []
+      {:idx => events.length, :data => subset_events }.to_json
     end
   end
 end
