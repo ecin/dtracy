@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>D. Tracy</title>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/jquery-1.3.2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/jquery-ui-1.7.2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/jquery.jsonp-1.0.4.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/dtracy.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/gui.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/processing.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/processing.init.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/__dtracy__/js/ring.js"></script>
+    <link rel="stylesheet" href="/__dtracy__/css/awesome.css" type="text/css" media="screen" charset="utf-8" />
+  </head>
+  <body>
+    <div id="white_out"></div>
+    <div class="date"><%= @date %></div>
+    <div id="time_strip">
+      <div id="time_strip_delimiters"></div>
+      <div id="time_strip_segment"></div>
+    </div>
+    <div id="probe_list">
+      <div id="probe_list_data">
+        <% for probe in @probes %>
+          <div class="probe" custom:name="<%= probe %>">
+            <%= probe %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <canvas id="canvas" width="200px" height="200px"></canvas>
+    <div id="bottom_console">
+      <div id="console_data"> &nbsp; </div>
+    </div>
+    <script>new gui.Console("console_data");</script>
+    <script>dtracy.update(0);</script>
+    <script>gui.setup();</script>
+  </body>
+</html>
