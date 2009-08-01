@@ -24,7 +24,7 @@ gem dependencies
 running locally
 ---------------
 
-The running process will require root privileges in order to access the Dtrace probes. As such, `sudo bin/server` will run the `rackup` with `examples/dtracy.ru` as a rackup file on port 3000.
+The running process will require root privileges in order to access the Dtrace probes. As such, `sudo bin/server` will run `rackup` with `examples/dtracy.ru` as a rackup file on port 3000.
 
 hello world - a brief overview
 ------------------------------
@@ -33,10 +33,10 @@ Actually, I don't mean to be pretentious. "hello 4 or 5 curious developers" is a
 
 Digression aside, Dtracy is divided into two areas: `Rack::Probe` and `Dtracy::App`. They're both written as Rack middleware to allow easy dropping into other apps, with `Rack::Probe` handling the definition and consumption of Dtrace probes while `Dtracy::App` is meant to provide visualizations to the data generated from the aforementioned probes. 
 
-When running `bin/server`, the `Dtracy::App` app gets loaded, providing a list of activated probes and an inconspicuous ring at  `/__dtracy__/`. Requests made to  will fire a hard-coded probe, which in turn will change some properties of the circle. In short:
+When running `bin/server`, the `Dtracy::App` app gets loaded, providing a list of activated probes and an inconspicuous ring at  `/__dtracy__/`. Requests made to the server will fire the `rack*:ruby:path:path` probe setup in `examples/dtracy.ru`. In short:
 
 * Point a browser at `localhost:3000/__dtracy__/`
-* Drag and drop the `rack*:ruby:path:path` probe onto the ring; it should start spinning
+* Drag and drop the `rack*:ruby:path:path` div/string onto the ring; it should start spinning
 * `curl localhost:3000/[any path]` several times
 * Watch the ring spin faster; this is due to the probe firing for each request made
 * `ab -n100 http://127.0.0.1:3000/[any path]` if you feel like hosing the application
