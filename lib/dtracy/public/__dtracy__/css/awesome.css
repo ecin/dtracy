@@ -90,6 +90,17 @@ canvas{
   margin-top: 20px;
 }
 
+#save_button{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 27px;
+  width: 98px;
+  background: url(/__dtracy__/img/save_button.png);
+  margin: 20px;
+  cursor: pointer;
+}
+
 .evnt_name{ font-weight: bold; }
 .evnt_argument_name { text-decoration: underline; }
 

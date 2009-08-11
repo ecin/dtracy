@@ -35,6 +35,7 @@
     <div id="bottom_console">
       <div id="console_data"> &nbsp; </div>
     </div>
+    <div id='save_button' onClick='vis.Dashboard.save(); $(this).animate({"opacity": 0.7}, 500, "linear"); self = this; setTimeout(function(){$(self).animate({"opacity": 1.0})}, 5*60*1000);'></div>
     <script>new gui.Console("console_data");</script>
     <script>dtracy.update(0);</script>
     <script>gui.setup();</script>
