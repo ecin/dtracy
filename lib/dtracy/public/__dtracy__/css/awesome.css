@@ -101,6 +101,11 @@ canvas{
   color: white;
   background: #111;
   cursor: pointer;
+  float: right;
+}
+
+#save_button:hover{
+  padding-right: 40px;
 }
 
 .vis_tag{
