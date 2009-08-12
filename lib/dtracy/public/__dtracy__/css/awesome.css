@@ -77,7 +77,7 @@ canvas{
 
 #time_strip_delimiters{
   height: 100%;
-  width: 860;
+  width: 860px;
   background: url(/__dtracy__/img/black_delimiter.png);
   position: relative;
 }
@@ -94,11 +94,38 @@ canvas{
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 27px;
-  width: 98px;
-  background: url(/__dtracy__/img/save_button.png);
-  margin: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding: 5px 20px 5px 10px;
+  font-size: 30px;
+  color: white;
+  background: #111;
   cursor: pointer;
+}
+
+.vis_tag{
+  padding: 5px 20px 5px 10px;
+  cursor: pointer;
+  background: #111;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 5px;
+  float: right;
+}
+
+.vis_tag:hover{
+  padding-right: 40px;
+}
+
+.vis_outline{
+  border: 1px dashed #111;
+}
+
+#vis_catalogue{
+  position: absolute;
+  top: 200px;
+  right: 0;
+  font-weight: bold;
 }
 
 .evnt_name{ font-weight: bold; }
