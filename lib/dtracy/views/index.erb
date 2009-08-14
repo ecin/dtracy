@@ -31,13 +31,11 @@
     </div>
     -->
     <div id="probe_list">
-      <div id="probe_list_data">
-        <% for probe in @probes %>
-          <div class="probe" custom:name="<%= probe %>">
-            <%= probe %>
-          </div>
-        <% end %>
-      </div>
+      <% for probe in @probes %>
+        <div class="probe" custom:name="<%= probe %>">
+          <%= probe %>
+        </div>
+      <% end %>
     </div>
     <div id="bottom_console">
       <div id="console_data"> &nbsp; </div>
