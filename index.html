@@ -15,10 +15,10 @@
 
     #headline{
     padding: 0;
-    width: 1057px;
-    height: 328px;
+    width: 1147px;
+    height: 443px;
     background: url(headline.png);
-    margin: 50px 0 0 20px;
+    margin: 20px 0 0 20px;
     }
 
     h1{
@@ -50,6 +50,10 @@
     #setup{
     background: #111;
     color: white;
+    }
+    
+    #setup div{
+      padding-bottom: 0;
     }
 
     #fork_me{
@@ -90,6 +94,10 @@
     sup a:active{
     color: white;
     }
+    
+    p{
+      margin-bottom: 10px;
+    }
     </style>
     <title>Dtracy</title>
   </head>
@@ -101,8 +109,10 @@
     <div>
       <h1>
         Psst, Over Here...
-      </h1><span class='comment'>have you heard of dtracy?</span>
+      </h1><span class='comment'>hear what all the humbug is about</span>
       <div>
+        <p>Hello</p>
+        <p>Goodbye</p>
         <ul>
           <li>GSoC
           </li>
@@ -137,29 +147,27 @@
       <div>
         <ul>
           <li>gem sources -a <b>http://gems.github.com</b> <span class='comment'>only if you haven't done it before</span></li>
-          <li>gem install <b>rack</b></li>
-          <li>gem install <b>ruby-dtrace</b></li>
           <li>gem install <b>ecin-rack-probe</b></li>
         </ul>
       </div>
       <div>
-        <h3>Rails Middleware</h3>
+        <h3>For <u>Rails</u> Apps</h3>
         <div>
           <ul>
             <li><span class='comment'>Inside your config/environment.rb</span></li>
-            <li>config.gem <b>"ecin-rack-probe"</b>, :lib =&gt; <b>"rack/probe"</b></li>
-            <li>config.middleware.use <b>"Rack::Probe"</b></li>
+            <li>config.gem <b>'ecin-rack-probe'</b>, :lib =&gt; <b>'rack/probe'</b></li>
+            <li>config.middleware.use <b>'Rack::Probe'</b></li>
           </ul>
           <br>
           <ul>
             <li><span class='comment'>To verify, from a terminal</span></li>
-            <li>rake middleware | grep Rack::Probe <span class='comment'> # => use Rack::Probe</span></li>
+            <li>rake middleware | grep <b>Rack::Probe</b> <span class='comment'> # => use Rack::Probe</span></li>
           </ul>
         </div>
       </div>
       <div>
-        <h3>Rack Middleware</h3>
-        <div>
+        <h3>For <u>Rack-based</u> Apps</h3>
+        <div style='padding-bottom: 40px;'>
         <ul>
           <li><span class='comment'>Inside your rackup file</span></li>
           <li>require <b>'rack/probe'</b><li>
@@ -172,24 +180,36 @@
       </h2><span class='comment'>and get wicked cool visualizations for your data</span>
       <div>
         <ul>
-          <li>git clone <b>git://github.com/ecin/dtracy.git</b>
-          </li>
-          <li>get dscripts / all rack probes by default (?)
-          </li>
-          <li>setup as rack middleware / in rails
+          <li>gem install <b>ecin-dtracy</b></li>
           </li>
         </ul>
       </div>
       <div>
-        <h3>
-          Rails Metal
-        </h3>
+        <h3>For <u>Rails</u> Apps</h3>
+        <div>
+        <ul>
+          <li><span class='comment'>Inside your config/environment.rb</span></li>
+          <li>config.gem <b>'ecin-dtracy'</b>, :lib =&gt; <b>'dtracy'</b></li>
+          <li>config.middleware.use <b>'Dtracy::App'</b></li>
+        </ul>
+        <br>
+        <ul>
+          <li><span class='comment'>To verify, from a terminal</span></li>
+          <li>rake middleware | grep <b>Dtracy::App</b> <span class='comment'> # => use Dtracy::App</span></li>
+        </ul>
+        </div>
       </div>
       <div>
-        <h3>
-          Rack Middleware
-        </h3>
+        <h3>For <u>Rack-based</u> Apps</h3>
+        <div>
+         <ul>
+            <li><span class='comment'>Inside your rackup file</span></li>
+            <li>require <b>'dtracy'</b><li>
+            <li>use <b>Dtracy::App</b></li>
+          </ul>
+        </div>
       </div>
+      <div style='padding-bottom: 10px;'><h3 style='font-weight: normal;'>Visit <span style='font-weight: bold; font-style: italic; padding: 0 5px 0 5px; color: #027dff;'>http://ip.of.the.app/__dtracy__/</span> once you're all set.</h3></div>
     </div>
     <div class='bottom_stripe'></div>
     <div>
