@@ -18,7 +18,6 @@ module Dtracy
     set :reload, true
 
     use Rack::JSONP
-    use Rack::Probe
     
     def initialize_copy( from )
       unless Dtective::ran?

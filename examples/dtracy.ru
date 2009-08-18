@@ -1,5 +1,5 @@
-require File.expand_path(File.dirname(__FILE__)+'/../lib/rack/probe')
 require File.expand_path(File.dirname(__FILE__)+'/../lib/dtracy')
+require 'rack/probe'
 
 module Rack
   class JSONP
@@ -24,4 +24,5 @@ script = <<-DSCRIPT
 }
 DSCRIPT
 
+use Rack::Probe
 run Dtracy::App.configure {|app| app.set :scripts, [script]}
