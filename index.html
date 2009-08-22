@@ -3,10 +3,24 @@
   <head>
 
     <style type="text/css" media="screen">
-*{
+    *{
     padding: 0;
     margin: 0;
     font-family: helvetica, arial;
+    }
+
+    a{
+      color: #FF00CB;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    a:hover{
+      text-decoration: underline;
+    }
+    
+    a:visited{
+      font-weight: normal;
     }
 
     div{
@@ -126,15 +140,12 @@
         Elevator Pitch
       </h1><span class='comment'>also known as the 60-second sell</span>
       <div>
-        <ul>
-          <li>rack-based
-          </li>
-          <li>visualizations ; ruby is dynamic, why not my graphs?
-          </li>
-          <li>grouping
-          </li>
-          <li>low overhead (maybe...), probes remain in place, trace only when you need/want to
-          </li>
+        <ul style='list-style-type: circle;'>
+          <li>it's <b>Rack-based</b>. Cool, huh?</li>
+          <li>it has visualizations. Not only that, they're <b>dynamic</b> visualizations. After all, Ruby is pretty dynamic, why shouldn't your graphs follow suit?</li>
+          <li>it allows you to follow as many web apps as you wish, as long as they reside on the same box.<i>"Never compromise!"</i>, as a fellow trench-coat wearing <a href='http://en.wikipedia.org/wiki/Rorschach_(comics)'>fellow</a> advises.</li>
+          <li>it has a low overhead, and a <b>snazzy</b> "probe only when you want to" flow thanks to dtrace. Don't worry about leaving probes in place, they'll be out of your way until <i>you</i> need them.</li>
+          <li>it has an <b>awesome</b> logo. It's like your very own badge you can wear proudly wherever metrics take you.</li>
         </ul>
       </div>
     </div>
@@ -146,8 +157,8 @@
       </h1><span class='comment'>with dtrace probes in your webapp</span>
       <div>
         <ul>
-          <li>gem sources -a <b>http://gems.github.com</b> <span class='comment'>only if you haven't done it before</span></li>
-          <li>gem install <b>ecin-rack-probe</b></li>
+          
+          <li>gem install <b>rack-probe</b></li>
         </ul>
       </div>
       <div>
@@ -155,7 +166,7 @@
         <div>
           <ul>
             <li><span class='comment'>Inside your config/environment.rb</span></li>
-            <li>config.gem <b>'ecin-rack-probe'</b>, :lib =&gt; <b>'rack/probe'</b></li>
+            <li>config.gem <b>'rack-probe'</b></li>
             <li>config.middleware.use <b>'Rack::Probe'</b></li>
           </ul>
           <br>
@@ -213,6 +224,7 @@
     </div>
     <div class='bottom_stripe'></div>
     <div>
+      <!-- 
       <h1>
         Screencasts
       </h1>
@@ -244,25 +256,24 @@
           probe overhead + cost when tracing
         </h2>
       </div>
+    -->
       <h1>
         Credits
       </h1><span class='comment'>buy them a beer, won'tcha</span>
       <div>
         <ul>
-          <li>gsoc for funding
+          <li><a href='http://code.google.com/soc/'>Google's Summer of Code</a> for the experience.</li>
+          <li><a href='http://yehudakatz.com/'>Yehuda</a> for his believing and <b>100%</b> certified mentoring.</li>
+          <li><a href='http://bitsweat.net/'>Jeremy</a> for his patience. Sorry it took so long to put up the site!
           </li>
-          <li>yehuda for believing
+          <li>The Rails Google Summer of Code 2009 quartet for the great company.</li>
+          <li><a href='http://midnitecomplex.com/'>Julie</a> for the sharp-looking logo.</li>
           </li>
-          <li>jeremy for his patience
-          </li>
-          <li>the rails quartet for company
-          </li>
-          <li>julie for logo at a good price
-          </li>
-        </ul>** Control tracing from within dtracy? launching dtectives dynamically Screencast music: http://magnatunes.com/artists/albums/harvey-otherwake/ track 1; CC license
+        </ul>
+        <!-- ** Control tracing from within dtracy? launching dtectives dynamically Screencast music: http://magnatunes.com/artists/albums/harvey-otherwake/ track 1; CC license -->
       </div>
       <div id='footnotes'>
-        <a name='#footnotes'><sup>1</sup> Claimed time is dependent on internet connection and typing speed; if you ain't got a T3 and can do 243WPM on a keyboard, it may take slightly longer.</a>
+        <a name='#footnotes'><sup>1</sup></a> Claimed time is dependent on internet connection and typing speed; if you ain't got a T3 and can do 243WPM on a keyboard, it may take slightly longer.</a>
       </div>
     </div>
   </body>
